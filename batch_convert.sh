@@ -13,7 +13,7 @@ SHAPEFILE_DIRS=shapefiles/*/
 # run it !
 
 mkdir -p "${MAP_DIR}"
-for i in ${SHAPEFILE_DIRS}; \
-	do ./convert.sh ${SHAPEFILE_DIRS}/${SHAPEFILE_NAME} && \
+for i in ${SHAPEFILE_DIRS}; do \
+./convert.sh "$i"/$SHAPEFILE_NAME && \
 	mv out.bin mapset/"$(basename "$i")".bin; \
-	done
+done
