@@ -15,5 +15,6 @@ SHAPEFILE_DIRS=shapefiles/*/
 mkdir -p "${MAP_DIR}"
 for i in ${SHAPEFILE_DIRS}; do \
 ./convert.sh "$i"/$SHAPEFILE_NAME && \
-	mv out.bin mapset/"$(basename "$i")".bin; \
+	mv out.bin ${MAP_DIR}/"$(basename "$i")".bin; \
+	printf "<map type=\"binfile\" data=\"\$NAVIT_SHAREDIR/maps/"$(basename "$i")".bin\" />" > ${MAP_DIR}/"$(basename "$i")".xml; \
 done
